@@ -1,0 +1,12 @@
+- id: enforce-action-comments
+  name: Enforce Action Comments
+  description: "This hook ensures that there are no comments that demand immediate action"
+  entry: enforce-action-comments
+  language: python
+  files: ''
+- id: list-action-comments
+  name: List Action Comments
+  description: "This hook prints out all comments with tags like FIXME and TODO"
+  entry: list-action-comments
+  language: python
+  files: ''
