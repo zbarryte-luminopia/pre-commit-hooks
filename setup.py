@@ -6,7 +6,7 @@ setup(
     name='luminopa_pre_commit_hooks',
     description='Some custom pre-commit-hooks used by Luminopia',
     url='https://github.com/luminopia/pre-commit-hooks',
-    version='0.0.1',
+    version='0.0.2',
 
     author='Alex Wendland',
     author_email='alex@luminopia.com',
@@ -27,6 +27,7 @@ setup(
     entry_points={
         'console_scripts': [
             'enforce-action-comments = pre_commit_hooks.enforce_action_comments:main',
+            'lfs-large-files = pre_commit_hooks.lfs_large_files:main',
             'list-action-comments = pre_commit_hooks.list_action_comments:main'
         ],
     },

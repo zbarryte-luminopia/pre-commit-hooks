@@ -10,3 +10,10 @@
   entry: list-action-comments
   language: python
   files: ''
+- id: lfs-large-files
+  name: LFS Large Files
+  description: "This hooks detects binary files over a certain threshold and ensures that they are LFSed"
+  entry: lfs-large-files
+  language: python
+  args: [ --maximum-binary-size, '524288' ] # 512 KiB
+  files: ''
