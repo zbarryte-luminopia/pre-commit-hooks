@@ -17,3 +17,10 @@
   language: python
   args: [ --maximum-binary-size, '524288' ] # 512 KiB
   files: ''
+- id: yarn-licenses
+  name: Yarn Licenses
+  description: "This hook analyzes the licenses of packages managed by a yarn.lock file to ensure they meet approved license requirements"
+  entry: yarn-licenses
+  language: python
+  args: [ --approved-licenses, 'MIT,BSD-3-Clause,Public Domain,Unlicense' ]
+  files: 'yarn.lock'
