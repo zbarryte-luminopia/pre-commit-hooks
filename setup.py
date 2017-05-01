@@ -6,7 +6,7 @@ setup(
     name='luminopa_pre_commit_hooks',
     description='Some custom pre-commit-hooks used by Luminopia',
     url='https://github.com/luminopia/pre-commit-hooks',
-    version='0.0.3',
+    version='0.0.4',
 
     author='Alex Wendland',
     author_email='alex@luminopia.com',

@@ -42,6 +42,12 @@ This hook ensures that there are no comments that demand immediate action. Curre
 
 ## Changelog
 
+*v0.0.4*
+
+Fix `yarn-licenses` file reading issue for large yarn.lock files
+
+Trim option segments for `explicit-packages` command line argument
+
 *v0.0.3*
 
 Add hook for checking node packages against a whitelist (`yarn-licenses`)
