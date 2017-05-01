@@ -6,6 +6,8 @@ import json
 import re
 import subprocess
 
+from tempfile import TemporaryFile
+
 
 WARNING_MSG = '{0}@{1} has unapproved license "{2}"'
 
@@ -22,16 +24,22 @@ def main(argv=None):
 
     def process_explicit_package(item):
         info = item.split('::')
-        version = info[2] if len(info) == 3 else None
-        return { 'package': info[0], 'license': info[1], 'version': version }
+        version = info[2].strip() if len(info) == 3 else None
+        return { 'package': info[0].strip(), 'license': info[1].strip(), 'version': version }
     explicit_packages = map(process_explicit_package, args.explicit_packages)
 
     retcode = 0
     for filename in args.filenames:
         if 'yarn.lock' in filename:
-            # Load license information for this yarn.lock file
-            licenses_raw = subprocess.check_output(['yarn', 'licenses', 'ls', '--json'],
-                                                   cwd=path.dirname(filename)).split('\n')
+            # Load license information for this yarn.lock file into a temporary file, then read from it
+            # This circumvents a limitation of subprocess which truncates the output of any line to 64k bytes
+            with TemporaryFile() as stdout:
+                subprocess.call(['yarn', 'licenses', 'ls', '--json'],
+                               cwd=path.abspath(path.dirname(filename)),
+                               stdout=stdout)
+                stdout.seek(0)
+                licenses_raw = stdout.read().split('\n')
+
             licenses_json = ''
             for line in licenses_raw:
                 if '"type":"table"' in line:
