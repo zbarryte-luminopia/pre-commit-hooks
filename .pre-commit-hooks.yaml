@@ -4,12 +4,6 @@
   entry: enforce-action-comments
   language: python
   files: ''
-- id: list-action-comments
-  name: List Action Comments
-  description: "This hook prints out all comments with tags like FIXME and TODO"
-  entry: list-action-comments
-  language: python
-  files: ''
 - id: lfs-large-files
   name: LFS Large Files
   description: "This hooks detects binary files over a certain threshold and ensures that they are LFSed"
