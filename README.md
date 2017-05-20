@@ -33,7 +33,11 @@ This hook analyzes the licenses of all the node packages managed by the yarn.loc
 
 `enforce-action-comments`
 
-This hook ensures that there are no comments that demand immediate action. Currently, this hook looks for `TODO NOW` entries in the source code and fails a commit if any exist.
+This hook ensures that there are no comments that demand immediate action. Currently, this hook looks for `FIXME` or `FIX ME` entries in the source code and fails a commit if any exist.
+
+| Argument | Default       | Description |
+|----------|---------------|-------------|
+| --tags   | FIXME, FIX ME | What strings should be flagged as needing immediate action |
 
 ## Other Resources
 
@@ -41,6 +45,12 @@ This hook ensures that there are no comments that demand immediate action. Curre
 * https://github.com/detailyang/pre-commit-shell
 
 ## Changelog
+
+*v0.0.5*
+
+Make `enforce-action-comments` configurable and make defaults more sensible.
+
+Remove undocumented, and incorrectly implemented, `list-action-comments` hook.
 
 *v0.0.4*
 
