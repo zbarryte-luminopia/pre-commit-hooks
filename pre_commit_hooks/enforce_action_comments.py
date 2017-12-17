@@ -1,7 +1,6 @@
 from __future__ import print_function
 
 import argparse
-import os.path
 
 
 WARNING_MSG = 'Actionable comment "{0}" found in {1}:{2}'
@@ -16,7 +15,7 @@ def main(argv=None):
 
     retcode = 0
     for filename in args.filenames:
-        with open(filename, 'rb') as inputfile:
+        with open(filename, 'r') as inputfile:
             for i, line in enumerate(inputfile):
                 for pattern in args.tags:
                     if pattern in line:

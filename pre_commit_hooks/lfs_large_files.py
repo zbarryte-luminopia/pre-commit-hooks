@@ -24,9 +24,9 @@ def main(argv=None):
     parser.add_argument('filenames', nargs='*', help='filenames to check')
     args = parser.parse_args(argv)
 
-    lfs_ls_files = subprocess.check_output(['git', 'lfs', 'ls-files']).split('\n')
+    lfs_ls_files = subprocess.check_output(['git', 'lfs', 'ls-files']).decode('utf-8').split('\n')
     lfs_files = [l[13:] for l in lfs_ls_files if len(l) > 13]
-    lfs_status = subprocess.check_output(['git', 'lfs', 'status']).split('\n')
+    lfs_status = subprocess.check_output(['git', 'lfs', 'status']).decode('utf-8').split('\n')
     # TODO use non-porcelain command to get newly tracked + staged LFS files
     status_regex = re.compile('^\t(.+?) \(.+?\)$')
     for line in lfs_status:
