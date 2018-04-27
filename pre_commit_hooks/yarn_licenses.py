@@ -26,7 +26,7 @@ def main(argv=None):
         info = item.split('::')
         version = info[2].strip() if len(info) == 3 else None
         return { 'package': info[0].strip(), 'license': info[1].strip(), 'version': version }
-    explicit_packages = map(process_explicit_package, args.explicit_packages)
+    explicit_packages = list(map(process_explicit_package, args.explicit_packages))
 
     retcode = 0
     for filename in args.filenames:
@@ -34,11 +34,11 @@ def main(argv=None):
             # Load license information for this yarn.lock file into a temporary file, then read from it
             # This circumvents a limitation of subprocess which truncates the output of any line to 64k bytes
             with TemporaryFile() as stdout:
-                subprocess.call(['yarn', 'licenses', 'ls', '--json'],
+                subprocess.call(['yarn', 'licenses', 'list', '--json'],
                                cwd=path.abspath(path.dirname(filename)),
                                stdout=stdout)
                 stdout.seek(0)
-                licenses_raw = stdout.read().split('\n')
+                licenses_raw = stdout.read().decode('utf-8').split('\n')
 
             licenses_json = ''
             for line in licenses_raw:
