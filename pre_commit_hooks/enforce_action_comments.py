@@ -16,13 +16,16 @@ def main(argv=None):
     retcode = 0
     for filename in args.filenames:
         with open(filename, 'r') as inputfile:
-            for i, line in enumerate(inputfile):
-                for pattern in args.tags:
-                    if pattern in line:
-                        print(WARNING_MSG.format(
-                            pattern.decode(), filename, i + 1,
-                        ))
-                        retcode = 1
+            try:
+                for i, line in enumerate(inputfile):
+                    for pattern in args.tags:
+                        if pattern in line:
+                            print(WARNING_MSG.format(
+                                pattern.decode(), filename, i + 1,
+                            ))
+                            retcode = 1
+            except UnicodeDecodeError:
+                continue
 
     return retcode
 
