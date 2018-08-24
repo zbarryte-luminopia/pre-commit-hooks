@@ -54,7 +54,7 @@ def main(argv=None):
                     # Check if there is an explicit license for this package
                     exp = next((e for e in explicit_packages if e['package'] == l['Name']), None)
                     # TODO add explicit license wildcard support
-                    if not exp or exp['license'] != l['License'] or (exp['version'] and exp['version'] != l['Version']):
+                    if not exp or exp['license'].lower() != l['License'].lower() or (exp['version'] and exp['version'] != l['Version']):
                         print(WARNING_MSG.format(l['Name'], l['Version'], l['License']))
                         retcode = 1
             if retcode != 0:
