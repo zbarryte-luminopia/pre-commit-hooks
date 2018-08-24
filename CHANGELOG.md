@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.0.9
+
+Case-insensitive checks on license names for `--explicit-packages`.
+
 ## v0.0.8
 
 Ignore utf-8 decode errors in `enforce-action-comments` to allow non-utf-8 files (e.g. images) to pass the check.
