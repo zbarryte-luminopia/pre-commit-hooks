@@ -3,6 +3,7 @@
   description: "This hook ensures that there are no comments that demand immediate action"
   entry: enforce-action-comments
   language: python
+  language_version: python2
   args: [ --tags, 'FIXME,FIX ME']
   files: ''
 - id: lfs-large-files
@@ -10,6 +11,7 @@
   description: "This hooks detects binary files over a certain threshold and ensures that they are LFSed"
   entry: lfs-large-files
   language: python
+  language_version: python2
   args: [ --maximum-binary-size, '524288' ] # 512 KiB
   files: ''
 - id: yarn-licenses
