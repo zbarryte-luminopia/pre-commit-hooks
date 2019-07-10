@@ -1,0 +1,12 @@
+cd wonder
+
+flutter test
+
+failed_tests=$?
+
+if [ $failed_tests -ne 0 ]; then
+		echo $failed_tests 'test(s) failed.'
+        exit 1
+fi
+
+exit 0

@@ -21,3 +21,10 @@
   language: python
   args: [ --approved-licenses, 'MIT,BSD-3-Clause,Public Domain,Unlicense' ]
   files: 'yarn.lock'
+- id: ensure-flutter-tests-pass
+  name: Ensure Flutter Tests Pass
+  description: "This hook ensures that all Flutter tests pass"
+  entry: ensure-flutter-tests-pass
+  language: docker_image
+  docker_image: cirrusci/flutter
+  files: ''
